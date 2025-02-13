@@ -1,0 +1,14 @@
+---
+import { profile } from "../data/profileData";
+import "../styles/profile.css";
+---
+
+<div class="profile-info">
+  <h2>{profile.name}</h2>
+  <p class="title">{profile.title}</p>
+  <p class="skills">{profile.skills.join(" || ")}</p>
+  <p class="role">{profile.role}</p>
+  <p class="location">📍 {profile.location}</p>
+  <p class="contacts">{profile.contacts} contactos</p>
+</div>
+

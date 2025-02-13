@@ -1,0 +1,35 @@
+---
+import '../styles/global.css';
+
+const { title, date, description, image, tags, content } = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <h1>{title}</h1>
+        <p><strong>Fecha:</strong> {new Date(date).toLocaleDateString()}</p>
+      </header>
+
+      {tags && tags.length > 0 && (
+        <div class="tags">
+          {tags.map(tag => (
+            <span> {tag}</span>
+          ))}
+        </div>
+      )}
+
+      <article class="post-content">
+        <slot />
+      </article>
+    </div>
+  </body>
+</html>

@@ -1,14 +1,33 @@
 {
-  "name": "portafolio-jairo-flores-ruiz",
-  "type": "module",
-  "version": "0.0.1",
-  "scripts": {
-    "dev": "astro dev",
-    "build": "astro build",
-    "preview": "astro preview",
-    "astro": "astro"
-  },
-  "dependencies": {
-    "astro": "^5.1.6"
-  }
+    "name": "portafolio-con-astro",
+    "version": "1.0.0",
+    "description": "Segundo portafolio (Astro)",
+    "main": "index.js",
+    "scripts": {
+        "dev": "astro dev",
+        "build": "astro build",
+        "preview": "astro preview"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/Jairo-Digitt-Practicas/Portafolio-Jairo-Flores-Ruiz.git"
+    },
+    "author": "Jairo Flores Ruiz",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/Jairo-Digitt-Practicas/Portafolio-Jairo-Flores-Ruiz/issues"
+    },
+    "homepage": "https://github.com/Jairo-Digitt-Practicas/Portafolio-Jairo-Flores-Ruiz#readme",
+    "dependencies": {
+        "@astrojs/mdx": "^4.0.8",
+        "@astrojs/react": "^4.2.0",
+        "@astrojs/tailwind": "^5.1.5",
+        "@emotion/react": "^11.14.0",
+        "@emotion/styled": "^11.14.0",
+        "@mui/material": "^6.4.2",
+        "react": "^19.0.0",
+        "react-dom": "^19.0.0",
+        "swiper": "^11.2.2",
+        "tailwindcss": "^3.4.17"
+    }
 }

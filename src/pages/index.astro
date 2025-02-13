@@ -1,11 +1,33 @@
 ---
-import Welcome from '../components/Welcome.astro';
+import Header from '../components/Header.astro';
 import Layout from '../layouts/Layout.astro';
+import ProfileCard from '../components/ProfileCard.astro';
+import { getCollection } from 'astro:content';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import 'swiper/css';
 
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+const posts = await getCollection('blog');
+import '../styles/blog.css';
+import '../styles/swiper.css';
 ---
 
 <Layout>
-	<Welcome />
+	<Header />
+	<ProfileCard />
+	<Swiper spaceBetween={20} navigation={true} slidesPerView={1} breakpoints={{
+		640: { slidesPerView: 2 },
+		1024: { slidesPerView: 3 }
+	}} >
+		{posts.map(post => (
+			<SwiperSlide key={post.slug}>
+				<article class="border rounded-lg shadow-lg p-4">
+					<a href={`/blog/${post.slug}`}>
+						<img src={post.data.image} alt={post.data.title} class="w-full h-40 object-cover rounded-md" />
+						<h3 class="text-lg font-semibold mt-2">{post.data.title}</h3>
+						<p class="text-gray-600">{post.data.description}</p>
+					</a>
+				</article>
+			</SwiperSlide>
+		))}
+	</Swiper>
 </Layout>

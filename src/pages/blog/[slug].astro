@@ -1,0 +1,36 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import '../../styles/global.css';
+import '../../styles/post.css';
+import { getCollection } from 'astro:content';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('blog'); 
+  return posts.map(post => ({
+    params: { slug: post.slug },
+    props: { post }, 
+  }));
+}
+
+const { post } = Astro.props;
+
+if (!post) {
+  return Astro.redirect('/404');
+}
+
+const { Content } = await post.render();
+const { title, date, description, image, tags, body } = post.data;
+---
+
+<BaseLayout title={title} date={date} description={description} image={image} tags={tags}>
+    <div class="post-container">
+        <h1 class="post-title">{title}</h1>
+        <p class="post-date">Publicado el: {new Date(date).toLocaleDateString()}</p>
+
+        {image && <img src={image} alt={title} class="post-image" />}
+
+        <article class="post-content">
+            <Content />
+        </article>
+    </div>
+</BaseLayout>
