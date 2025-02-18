@@ -1,7 +1,7 @@
 ---
 import Header from '../components/Header.astro';
 import Layout from '../layouts/Layout.astro';
-import ProfileCard from '../components/ProfileCard.astro';
+import ProfileCard from '../components/Profile/ProfileCard.astro';
 import { getCollection } from 'astro:content';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
@@ -16,7 +16,7 @@ import '../styles/swiper.css';
 	<ProfileCard />
 	<Swiper spaceBetween={20} navigation={true} slidesPerView={1} breakpoints={{
 		640: { slidesPerView: 2 },
-		1024: { slidesPerView: 3 }
+		1024: { slidesPerView: 4 }
 	}} >
 		{posts.map(post => (
 			<SwiperSlide key={post.slug}>
